@@ -15,6 +15,14 @@ Make sure you have:
 mpiexec -n <num_processes> python3 solution.py --text <text_file> --vocab <vocab_file> --stopwords <stopwords_file> --pattern <1|2|3|4>
 ```
 
+**Important**: If you get an error about "not enough slots available" when using more processes than your CPU cores, add the `--map-by :OVERSUBSCRIBE` flag:
+
+```bash
+mpiexec -n <num_processes> --map-by :OVERSUBSCRIBE python3 solution.py --text <text_file> --vocab <vocab_file> --stopwords <stopwords_file> --pattern <1|2|3|4>
+```
+
+This allows MPI to run more processes than available CPU cores (oversubscription), which is fine for testing and development.
+
 ## Pattern Requirements
 
 - **Pattern #1**: `-n >= 2` (1 manager + at least 1 worker)
@@ -115,7 +123,8 @@ mpiexec -n 5 python3 solution.py --text testcases/text_2.txt --vocab testcases/v
 ### Pattern #3 (with 13 processes = 3 pipelines)
 
 ```bash
-mpiexec -n 13 python3 solution.py --text testcases/text_2.txt --vocab testcases/vocab_2.txt --stopwords testcases/stopwords_2.txt --pattern 3
+# Note: If you get "not enough slots" error, add --map-by :OVERSUBSCRIBE
+mpiexec -n 13 --map-by :OVERSUBSCRIBE python3 solution.py --text testcases/text_2.txt --vocab testcases/vocab_2.txt --stopwords testcases/stopwords_2.txt --pattern 3
 ```
 
 ### Pattern #4 (with 7 processes = 3 pairs)
@@ -172,7 +181,7 @@ mpiexec -n 5 python3 solution.py --text testcases/text_5.txt --vocab testcases/v
 mpiexec -n 5 python3 solution.py --text testcases/text_5.txt --vocab testcases/vocab_5.txt --stopwords testcases/stopwords_5.txt --pattern 2
 
 # Pattern #3 (with 17 processes = 4 pipelines)
-mpiexec -n 17 python3 solution.py --text testcases/text_5.txt --vocab testcases/vocab_5.txt --stopwords testcases/stopwords_5.txt --pattern 3
+mpiexec -n 17 --map-by :OVERSUBSCRIBE python3 solution.py --text testcases/text_5.txt --vocab testcases/vocab_5.txt --stopwords testcases/stopwords_5.txt --pattern 3
 
 # Pattern #4 (with 9 processes = 4 pairs)
 mpiexec -n 9 python3 solution.py --text testcases/text_5.txt --vocab testcases/vocab_5.txt --stopwords testcases/stopwords_5.txt --pattern 4
@@ -280,4 +289,9 @@ mpiexec -n 7 python3 solution.py --text testcases/text_2.txt --vocab testcases/v
 - The output will show the Term-Frequency (TF) results, and for Pattern #4, also Document-Frequency (DF) results
 - If you get an error about process count, check that you're using the correct `-n` value for the pattern
 - **Invalid cases should exit cleanly** - if they hang, there's a deadlock issue that needs to be fixed
+- **"Not enough slots" error**: If you see this error when using many processes (e.g., `-n 17`), your system has fewer CPU cores than requested processes. Add `--map-by :OVERSUBSCRIBE` to allow oversubscription:
+  ```bash
+  mpiexec -n 17 --map-by :OVERSUBSCRIBE python3 solution.py ...
+  ```
+  This is safe for testing and allows running more MPI processes than CPU cores.
 

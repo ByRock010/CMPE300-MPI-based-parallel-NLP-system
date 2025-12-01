@@ -1,0 +1,10 @@
+city
+train
+ticket
+delay
+station
+route
+map
+tourist
+museum
+cafe

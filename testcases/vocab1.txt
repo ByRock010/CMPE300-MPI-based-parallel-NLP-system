@@ -1,0 +1,10 @@
+algorithm
+parallel
+process
+worker
+message
+data
+manager
+speedup
+task
+communication

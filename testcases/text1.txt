@@ -1,0 +1,51 @@
+Parallel algorithms class started on a rainy Monday morning.
+The professor gave a simple problem about vector addition.
+Each process received a different chunk of data.
+One worker handled preprocessing of the text.
+Another worker focused on term frequency counting.
+The manager process coordinated every message.
+We used MPI to send and receive data between ranks.
+At first the algorithm was sequential and slow.
+Then we redesigned the algorithm to be parallel.
+We measured the speedup on four cores.
+The speedup was not perfect because of communication cost.
+Some tasks were still inherently sequential.
+We tried to balance the workload across each worker.
+Load imbalance reduced the performance of the system.
+We optimized the preprocessing task by caching stopwords.
+Later we added another process to handle logging.
+Debugging a distributed algorithm can be very challenging.
+A single wrong message can block every process.
+We learned to design clear communication patterns.
+The final parallel algorithm processed the dataset quickly.
+I realized that understanding the data flow is as important as writing code.
+In the end the class project made parallel thinking feel natural.
+During the second week we implemented a parallel search algorithm.
+Each worker searched a different part of the array for the same key.
+The manager stopped the search when one worker found the key.
+We had to carefully terminate the other workers to avoid deadlock.
+Next we experimented with different chunk sizes for load balancing.
+Smaller chunks increased communication but reduced idle time.
+Larger chunks reduced communication but created idle workers.
+We plotted execution time against number of workers.
+The graph showed diminishing returns after a certain core count.
+The professor introduced Amdahl's Law to explain the limits.
+We compared strong scaling and weak scaling behaviors.
+In weak scaling we increased both data size and worker count.
+The runtime remained almost constant in the weak scaling experiment.
+We then profiled the program to identify hot spots.
+Communication routines consumed a significant fraction of total time.
+To optimize this, we reduced the frequency of synchronization.
+We batched messages instead of sending them one by one.
+This batching strategy lowered overhead without changing correctness.
+The homework asked us to rewrite the algorithm using nonblocking sends.
+We saw how nonblocking communication could hide latency.
+However, improper use of nonblocking primitives caused subtle bugs.
+One bug appeared only when we increased the number of processes.
+Another bug depended on the order in which messages were delivered.
+Through these errors we learned to think about possible interleavings.
+By the end of the unit, MPI function calls felt familiar.
+We could read traces of parallel execution and understand them.
+The project report required us to explain every communication pattern.
+Writing the report helped solidify our understanding of the design.
+Ultimately the course showed that good parallel algorithms require both theory and careful engineering.

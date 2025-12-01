@@ -1,0 +1,8 @@
+lecture
+quiz
+assignment
+deadline
+forum
+grade
+project
+collaboration

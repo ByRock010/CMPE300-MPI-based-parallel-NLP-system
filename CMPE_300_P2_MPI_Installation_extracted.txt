@@ -1,0 +1,35 @@
+
+================================================================================
+PAGE 1
+================================================================================
+
+Installing MPI and mpi4py on Windows and macOS
+Introduction
+This document provides a short guide for installing MPI and the Python package mpi4py on both
+Windows and macOS. On Windows, the recommended MPI implementation is Microsoft MPI
+(MS-MPI). On macOS, the recommended MPI implementation is OpenMPI.
+1. macOS Installation
+The simplest way to install OpenMPI and mpi4py in macOS is via using Homebrew1. Use the
+command:
+brew install mpi4py
+This installs both OpenMPI and mpi4py. This is sufficient if you use Homebrew’s Python. If you
+want to use mpi4py with another Python (virtual environment or another system-wide python),
+run the following with the Python interpreter you will use (after installation with Homebrew):
+python3 -m pip install mpi4py
+1https://brew.sh/
+1
+
+
+================================================================================
+PAGE 2
+================================================================================
+
+3. Running an MPI Program
+After installing the suitable MPI distribution and mpi4py, create an example python file hello.py:
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+print("Hello from rank", comm.Get_rank())
+Run with:
+mpiexec -n 4 python hello.py
+2
+

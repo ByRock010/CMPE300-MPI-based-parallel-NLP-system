@@ -1,0 +1,48 @@
+I started using a wearable device to track my daily health.
+The sensor on my wrist records my heart rate every minute.
+Each morning I check how much sleep I had during the night.
+Sometimes the data shows that my sleep was short and fragmented.
+When I drink coffee late, the heart readings become more irregular.
+The device estimates my stress level from heart rate variability.
+High stress scores appear on days with too many meetings.
+The application plots my steps as a simple bar chart.
+On weekends the steps increase because I walk in the park.
+The device sends an alert when I sit for too long.
+That alert reminds me to stand up and stretch.
+Over time I can see a pattern between sleep and mood.
+Good sleep makes my stress scores lower the next day.
+If the sensor loses contact, the data for that period is missing.
+I learned to tighten the strap so that the sensor stays stable.
+The app groups my days into low, medium, and high activity.
+Sometimes the pattern is broken by travel or illness.
+I try to keep at least eight thousand steps every day.
+The device also tracks short naps as separate sleep sessions.
+Even a twenty minute nap changes the stress pattern in the afternoon.
+I export the raw data to analyze it with my own scripts.
+This way I can test new ideas for predicting stress from sleep.
+One weekend I compared my readings with a friend's device.
+Our heart rate profiles looked different even on similar days.
+This comparison reminded me that every body reacts uniquely.
+The app recently added a breathing exercise for stressful moments.
+When my stress score is high, it suggests a short breathing session.
+Following the instructions slows my breathing and calms my mind.
+After a few minutes, my heart rate graph starts to look smoother.
+I bookmarked days with meetings to see their exact impact.
+On heavy meeting days my step count usually drops significantly.
+To fix that, I now schedule short walks between calls.
+These walks help both my body and my concentration.
+The weekly summary highlights my most active and least active days.
+I look for trends rather than focusing on a single bad day.
+Sometimes a bad night of sleep does not ruin the entire week.
+Small habits like drinking water and stretching also change my metrics.
+The device cannot capture every detail of my health.
+However, it gives a useful overview of long term trends.
+I learned that resting heart rate reacts slowly to lifestyle changes.
+Improvement appears only after several weeks of consistent behavior.
+This delay teaches patience and realistic expectations.
+The app lets me set personal goals for sleep and steps.
+When I reach a streak of completed goals, it sends a small celebration.
+Those virtual celebrations are simple, yet they motivate me.
+In the future I want to combine this data with nutrition logs.
+That might reveal hidden connections between food, sleep, and stress.
+Using the wearable turned my health into a measurable project.

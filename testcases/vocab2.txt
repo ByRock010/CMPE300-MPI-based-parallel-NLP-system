@@ -1,0 +1,8 @@
+sleep
+stress
+heart
+steps
+data
+sensor
+pattern
+alert

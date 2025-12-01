@@ -1,0 +1,6 @@
+Parallel algorithms are fun to learn.
+MPI allows processes to communicate.
+Each worker, handles a diffErent task.
+The manager sends , data To workers.
+Workers compute term frequency carefully.
+Parallel thinking improves ! Algorithm design.

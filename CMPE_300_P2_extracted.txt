@@ -210,8 +210,6 @@ this sample set of files to see an example input and to test your program.
 ./sample text.txt --vocab ./vocab.txt --stopwords ./stopwords.txt --pattern 3
 • At the top of your main source file, include your names, student IDs, and any notes relevant
 for grading (e.g., known issues, partial functionality).
-2mpi4py documentation
-3argparse documentation
 7
 
 

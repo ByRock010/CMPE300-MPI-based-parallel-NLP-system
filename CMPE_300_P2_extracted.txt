@@ -86,14 +86,14 @@ counting in this pattern.
 The manager process must send the input data in chunks, rather than sending the entire text
 at once. Sending all data at once prevents the pipeline from operating concurrently, since later
 stages cannot begin processing until earlier stages finish consuming their full input. Chunked com-
-municationensuresthateachworkercanstartprocessingitsportionwhileupstreamrankscontinue
+munication ensures that each worker can start processing its portion while upstream ranks continue
 sending additional chunks.
 Manager must send only to the Worker 1 in this pattern. Worker 1 receives a chunk from the
 manager, applies its operation (lowercasing), and sends the processed chunk to Worker 2. It then
 receives the next chunk from the manager and repeats the same steps until no chunks remain.
 Similarly, Worker 2 will receive from Worker 1 and send to Worker 3 and so on, resulting in the
 pipeline shown in Figure 2. Worker 4, which performs the final stage (term-frequency counting),
-accumulatestheTFresultsaseachchunkarrives. Afterallchunkshavepassedthroughthepipeline
+accumulates the TF results as each chunk arrives. After all chunks have passed through the pipeline
 3
 
 
@@ -116,7 +116,7 @@ the single-pipeline design of Pattern #2, here multiple pipelines run in paralle
 document-frequency counting in this pattern.
 The manager process is responsible for distributing data chunks across the available pipelines.
 Note that data partitioning occurs in two stages: first, the text is divided into larger chunks, one
-foreachpipeline. Theselargerchunksshouldbeobtainedbydividingthetotalnumberofsentences
+foreachpipeline. These larger chunks should be obtained by dividing the total number of sentences
 by the number of pipelines. Then, within each pipeline, these chunks are further split into smaller
 pieces (by dividing the number of sentences in the chunk by a value between 5 and 20) to feed the
 workers, following the same chunking strategy used in Pattern #2.

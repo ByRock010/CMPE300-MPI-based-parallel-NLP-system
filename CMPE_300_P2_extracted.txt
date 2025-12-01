@@ -182,12 +182,12 @@ PAGE 7
 MPI implementation suitable for your operating system (e.g., OpenMPI, MS-MPI), mpi4py
 works on top of these standard MPI distributions. You will use the following core MPI
 functions:
-– MPI Comm rank → comm.Get rank() in mpi4py
-– MPI Comm size → comm.Get size() in mpi4py
-– MPI Send → comm.send(data, dest=..., tag=...) in mpi4py
-– MPI Recv → comm.recv(source=..., tag=...) in mpi4py
-AlthoughtheMPIstandardprovidesmanycommunicationroutines(e.g.,MPI ISend,MPI IRecv,
-and various collective operations), you are limited to using only MPI Send and MPI Recv
+– MPI_Comm_rank → comm.Get_rank() in mpi4py
+– MPI_Comm_size → comm.Get_size() in mpi4py
+– MPI_Send → comm.send(data, dest=..., tag=...) in mpi4py
+– MPI_Recv → comm.recv(source=..., tag=...) in mpi4py
+Although the MPI standard provides many communication routines (e.g.,MPI_ISend,MPI_IRecv,
+and various collective operations), you are limited to using only MPI_Send and MPI_Recv
 forpoint-to-pointcommunicationinthisproject. Non-blockingcommunicationroutines(such
 as MPI ISend and MPI IRecv) and all collective operations are prohibited.
 • You should use the rank 0 process as the manager process, following the common practice.

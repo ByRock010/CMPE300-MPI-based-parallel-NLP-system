@@ -556,20 +556,31 @@ def main():
         vocabulary = set(vocab_list)
         stopwords_set = set(stopwords_list)
     
-    # Validate process count for each pattern
+    # Validate process count for each pattern (rank 0 decides, then informs all ranks)
+    config_ok = True
     if rank == 0:
         if args.pattern == 1 and size < 2:
             print("Error: Pattern #1 requires at least 2 processes (1 manager + 1 worker)")
-            return
+            config_ok = False
         elif args.pattern == 2 and size != 5:
             print(f"Error: Pattern #2 requires exactly 5 processes, got {size}")
-            return
+            config_ok = False
         elif args.pattern == 3 and (size - 1) % 4 != 0:
             print(f"Error: Pattern #3 requires size = 1 + 4i (i >= 1), got {size}")
-            return
+            config_ok = False
         elif args.pattern == 4 and (size - 1) % 2 != 0:
             print(f"Error: Pattern #4 requires size = 1 + 2i (i >= 1), got {size}")
-            return
+            config_ok = False
+        
+        # Inform all other ranks about validity
+        for other_rank in range(1, size):
+            comm.send(config_ok, dest=other_rank, tag=99)
+    else:
+        config_ok = comm.recv(source=0, tag=99)
+    
+    # If configuration is invalid, all ranks exit without entering any pattern
+    if not config_ok:
+        return
     
     # Execute the selected pattern
     if args.pattern == 1:

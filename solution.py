@@ -2,8 +2,8 @@
 CMPE 300: Analysis of Algorithms
 Project 2: MPI-Based Parallel NLP System
 
-Student Names: [To be filled]
-Student IDs: [To be filled]
+Student Names: Ahmet Baha Bayrakçıoğlu | Arif Evren
+Student IDs: 2022400051 | 2022400282
 
 This program implements four MPI communication patterns for parallel NLP processing:
 - Pattern #1: Parallel End-to-End Processing in Worker Processes
@@ -15,6 +15,16 @@ This program implements four MPI communication patterns for parallel NLP process
 import argparse
 import string
 from mpi4py import MPI
+
+# Note: This implementation uses ONLY the following MPI functions as required:
+# - comm.Get_rank()  → MPI_Comm_rank
+# - comm.Get_size()  → MPI_Comm_size
+# - comm.send()      → MPI_Send (point-to-point blocking send)
+# - comm.recv()      → MPI_Recv (point-to-point blocking receive)
+# 
+# Prohibited operations (NOT used):
+# - No collective operations (bcast, scatter, gather, reduce, allreduce, etc.)
+# - No non-blocking operations (isend, irecv, wait, etc.)
 
 
 def read_file_lines(filepath):
@@ -246,7 +256,7 @@ def pattern2(comm, rank, size, sentences, vocabulary, stopwords_set):
             print(f"{word}: {final_tf[word]}")
     
     elif rank == 1:  # Worker 1: Lowercasing
-        tf_accumulator = {word: 0 for word in vocabulary}
+        # tf_accumulator = {word: 0 for word in vocabulary}             BABA BUNU CURSOR KOYMUŞ GEREKSİZ DİYE KALDIRDIM AMA GEREKEBİLİR BELKİ SEN DE Bİ BAKSAN İYİ OLUR
         
         while True:
             chunk = comm.recv(source=0, tag=1)
@@ -261,7 +271,7 @@ def pattern2(comm, rank, size, sentences, vocabulary, stopwords_set):
             comm.send(processed, dest=2, tag=2)
         
         # Send accumulated TF to Worker 4 (will be empty, but needed for synchronization)
-        comm.send(tf_accumulator, dest=4, tag=4)
+        # comm.send(tf_accumulator, dest=4, tag=4)      (üstteki kaldırdığımdan dolayı)       BABA BUNU CURSOR KOYMUŞ GEREKSİZ DİYE KALDIRDIM AMA GEREKEBİLİR BELKİ SEN DE Bİ BAKSAN İYİ OLUR
     
     elif rank == 2:  # Worker 2: Punctuation Removal
         while True:

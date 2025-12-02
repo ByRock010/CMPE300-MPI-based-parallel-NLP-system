@@ -256,7 +256,7 @@ def pattern2(comm, rank, size, sentences, vocabulary, stopwords_set):
             print(f"{word}: {final_tf[word]}")
     
     elif rank == 1:  # Worker 1: Lowercasing
-        # tf_accumulator = {word: 0 for word in vocabulary}             BABA BUNU CURSOR KOYMUŞ GEREKSİZ DİYE KALDIRDIM AMA GEREKEBİLİR BELKİ SEN DE Bİ BAKSAN İYİ OLUR
+        # tf_accumulator = {word: 0 for word in vocabulary}             TODO: BABA BUNU CURSOR KOYMUŞ GEREKSİZ DİYE KALDIRDIM AMA GEREKEBİLİR BELKİ SEN DE Bİ BAKSAN İYİ OLUR
         
         while True:
             chunk = comm.recv(source=0, tag=1)
@@ -271,7 +271,7 @@ def pattern2(comm, rank, size, sentences, vocabulary, stopwords_set):
             comm.send(processed, dest=2, tag=2)
         
         # Send accumulated TF to Worker 4 (will be empty, but needed for synchronization)
-        # comm.send(tf_accumulator, dest=4, tag=4)      (üstteki kaldırdığımdan dolayı)       BABA BUNU CURSOR KOYMUŞ GEREKSİZ DİYE KALDIRDIM AMA GEREKEBİLİR BELKİ SEN DE Bİ BAKSAN İYİ OLUR
+        # comm.send(tf_accumulator, dest=4, tag=4)      TODO: (üstteki kaldırdığımdan dolayı)       BABA BUNU CURSOR KOYMUŞ GEREKSİZ DİYE KALDIRDIM AMA GEREKEBİLİR BELKİ SEN DE Bİ BAKSAN İYİ OLUR
     
     elif rank == 2:  # Worker 2: Punctuation Removal
         while True:

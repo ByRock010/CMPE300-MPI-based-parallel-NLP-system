@@ -6,3 +6,13 @@ are
 to
 from
 with
+for
+in
+on
+of
+and
+when
+where
+each
+every
+more

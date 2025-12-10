@@ -1,10 +1,10 @@
 algorithm
-parallel
-process
-worker
-message
 data
+worker
+parallel
 manager
-speedup
-task
 communication
+task
+speedup
+process
+message
